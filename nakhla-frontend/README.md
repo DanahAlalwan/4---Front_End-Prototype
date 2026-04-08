@@ -23,3 +23,14 @@ Nakhla is a React-based front-end prototype that helps users discover Saudi loca
 ```bash
 npm install
 npm run dev
+
+
+
+
+## Technologies Used
+- React.js
+- Vite
+- JavaScript (ES6+)
+- CSS
+- React Context API
+- React Router DOM
