@@ -5,63 +5,40 @@ export const categories = [
   'Accessories',
   'Beauty'
 ]
+import moonImg from '../assets/images/moonglaze.png'
+import moonLogo from '../assets/images/moonglaLogo.png'
 
+import locaImg from '../assets/images/loca.png'
+import locaLogo from '../assets/images/locaLogo.png'
 export const brands = [
   {
     id: 1,
-    name: 'Wardah Saudi',
-    category: 'Beauty',
-    description: 'A Saudi beauty brand focused on skincare and cosmetics.',
-    website: 'https://example.com',
-    image: 'https://via.placeholder.com/250x180',
-    logo: 'https://via.placeholder.com/100',
-    popularity: 90,
-    createdAt: '2025-01-10',
-    rating: 4.5,
-    reviews: [
-      { id: 1, user: 'Danah', stars: 5, comment: 'Amazing products!' },
-      { id: 2, user: 'Sara', stars: 4, comment: 'Very nice quality.' }
-    ]
-  },
-  {
-    id: 2,
-    name: 'Najd Perfumes',
-    category: 'Perfume',
-    description: 'Traditional and modern Saudi perfume collection.',
-    website: 'https://example.com',
-    image: 'https://via.placeholder.com/250x180',
-    logo: 'https://via.placeholder.com/100',
-    popularity: 80,
-    createdAt: '2025-03-15',
-    rating: 4.2,
+    name: 'Moon Glaze',
+    category: 'beauty',
+    description: 'Since starting as a makeup artistin 2015, Yara has been known for her signature dewy looks. Following on from starting her skincare line, emphasising the core for any ﬂawless makeup look is healthy skin.',
+    website: 'https://moonglaze.co',
+    image: moonImg,
+    logo: moonLogo,
+    popularity: 85,
+    createdAt: '2025-04-10',
+    rating: 4.9,
     reviews: []
   },
-  {
-    id: 3,
-    name: 'Safa Abayas',
-    category: 'Abayas',
-    description: 'Elegant abayas designed for modern Saudi women.',
-    website: 'https://example.com',
-    image: 'https://via.placeholder.com/250x180',
-    logo: 'https://via.placeholder.com/100',
-    popularity: 75,
-    createdAt: '2024-12-20',
-    rating: 4.8,
-    reviews: []
-  },
-  {
-    id: 4,
-    name: 'Palm Fashion',
-    category: 'Fashion',
-    description: 'Local fashion brand with stylish clothing.',
-    website: 'https://example.com',
-    image: 'https://via.placeholder.com/250x180',
-    logo: 'https://via.placeholder.com/100',
-    popularity: 88,
-    createdAt: '2025-02-01',
-    rating: 4.4,
-    reviews: []
-  }
+
+    {
+      id: 2,
+      name: 'Loca',
+      category: 'beauty',
+      description: 'A Saudi makeup brand offering trendy and affordable cosmetics designed for everyday beauty looks.',
+      website: 'https://locabeautysa.com',
+      image: locaImg,
+      logo: locaLogo,
+      popularity: 78,
+      createdAt: '2025-03-20',
+      rating: 4.3,
+      reviews: []
+    },
+
 ]
 
 export const verificationRequests = [

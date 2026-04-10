@@ -9,8 +9,8 @@ export default function CategoryPage() {
   const [sortBy, setSortBy] = useState('Newest')
 
   const filteredBrands = useMemo(() => {
-    const result = brands.filter((brand) => brand.category === name)
-
+    const result = brands.filter((brand) => brand.category === name.toLowerCase()
+)
     if (sortBy === 'Popular') {
       return [...result].sort((a, b) => b.popularity - a.popularity)
     }

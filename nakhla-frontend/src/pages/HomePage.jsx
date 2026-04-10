@@ -4,6 +4,7 @@ import perfumeImg from '../assets/images/perfume.jpg'
 import beautyImg from '../assets/images/beauty.jpg'
 import abayasImg from '../assets/images/najed_abaya.jpg'
 import safaImg from '../assets/images/safa_abaya.jpg'
+import { Link } from "react-router-dom";
 
 const accessoriesImg = fashionImg
 const wardanImg = beautyImg
@@ -33,48 +34,53 @@ export default function HomePage() {
           </div>
         </section>
 
-        <h2 style={{ marginBottom: '16px' }}>Categories</h2>
-        <div className="grid grid-4" style={{ marginBottom: '32px' }}>
-          <div className="category-card">
-            <div className="category-card-content">
-              <h3>Fashion</h3>
-              <p>Browse Saudi brands in Fashion</p>
-            </div>
-            <img src={fashionImg} alt="Fashion" className="category-img" />
-          </div>
+<h2 style={{ marginBottom: '16px' }}>Categories</h2>
 
-          <div className="category-card">
-            <div className="category-card-content">
-              <h3>Perfume</h3>
-              <p>Browse Saudi brands in Perfume</p>
-            </div>
-            <img src={perfumeImg} alt="Perfume" className="category-img" />
-          </div>
+<div className="grid grid-4" style={{ marginBottom: '32px' }}>
 
-          <div className="category-card">
-            <div className="category-card-content">
-              <h3>Abayas</h3>
-              <p>Browse Saudi brands in Abayas</p>
-            </div>
-            <img src={abayasImg} alt="Abayas" className="category-img" />
-          </div>
+  <Link to="/category/fashion" className="category-card">
+    <div className="category-card-content">
+      <h3>Fashion</h3>
+      <p>Browse Saudi brands in Fashion</p>
+    </div>
+    <img src={fashionImg} alt="Fashion" className="category-img" />
+  </Link>
 
-          <div className="category-card">
-            <div className="category-card-content">
-              <h3>Accessories</h3>
-              <p>Browse Saudi brands in Accessories</p>
-            </div>
-            <img src={accessoriesImg} alt="Accessories" className="category-img" />
-          </div>
+  <Link to="/category/perfume" className="category-card">
+    <div className="category-card-content">
+      <h3>Perfume</h3>
+      <p>Browse Saudi brands in Perfume</p>
+    </div>
+    <img src={perfumeImg} alt="Perfume" className="category-img" />
+  </Link>
 
-          <div className="category-card">
-            <div className="category-card-content">
-              <h3>Beauty</h3>
-              <p>Browse Saudi brands in Beauty</p>
-            </div>
-            <img src={beautyImg} alt="Beauty" className="category-img" />
-          </div>
-        </div>
+  <Link to="/category/abayas" className="category-card">
+    <div className="category-card-content">
+      <h3>Abayas</h3>
+      <p>Browse Saudi brands in Abayas</p>
+    </div>
+    <img src={abayasImg} alt="Abayas" className="category-img" />
+  </Link>
+
+  <Link to="/category/accessories" className="category-card">
+    <div className="category-card-content">
+      <h3>Accessories</h3>
+      <p>Browse Saudi brands in Accessories</p>
+    </div>
+    <img src={accessoriesImg} alt="Accessories" className="category-img" />
+  </Link>
+
+  <Link to="/category/beauty" className="category-card">
+    <div className="category-card-content">
+      <h3>Beauty</h3>
+      <p>Browse Saudi brands in Beauty</p>
+    </div>
+    <img src={beautyImg} alt="Beauty" className="category-img" />
+  </Link>
+
+</div>
+
+
 
         <h2 style={{ marginBottom: '16px' }}>Featured Brands</h2>
         <div className="grid grid-4">
