@@ -51,6 +51,11 @@ import vibeyLogo from '../assets/images/vibeyLogo.png'
 import aslImg from '../assets/images/asl.png'
 import aslLogo from '../assets/images/aslLogo.png'
 
+import harmonyImg from '../assets/images/harmony.png'
+import harmonyLogo from '../assets/images/harmonyLogo.png'
+
+import sunImg from '../assets/images/sunwave.png'
+import sunLogo from '../assets/images/sunwaveLogo.png'
 export const brands = [
   {
     id: 1,
@@ -245,6 +250,32 @@ export const brands = [
     popularity: 93,
     createdAt: '2025-04-02',
     rating: 4.8,
+    reviews: []
+  },
+  {
+    id: 16,
+    name: 'Harmony',
+    category: ['accessories'],
+    description: 'A Saudi eyewear brand specializing in stylish sunglasses and clear glasses, offering modern designs that combine eye protection with everyday fashion.',
+    website: 'https://salla.sa/Harmony.-sa',
+    image: harmonyImg,
+    logo: harmonyLogo,
+    popularity: 84,
+    createdAt: '2025-04-05',
+    rating: 4.4,
+    reviews: []
+  },
+  {
+    id: 17,
+    name: 'Sunwavve',
+    category: ['accessories'],
+    description: 'A Saudi accessories brand specializing in gold-plated jewelry, offering trendy and elegant pieces designed for everyday style and modern fashion.',
+    website: 'https://sunwavve.com',
+    image: sunImg,
+    logo: sunLogo,
+    popularity: 86,
+    createdAt: '2025-04-07',
+    rating: 4.5,
     reviews: []
   }
 
