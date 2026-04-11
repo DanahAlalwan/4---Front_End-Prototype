@@ -4,22 +4,23 @@ import fashionImg from '../assets/images/fashion.jpg'
 import perfumeImg from '../assets/images/perfume.jpg'
 import beautyImg from '../assets/images/beauty.jpg'
 import abayasImg from '../assets/images/najed_abaya.jpg'
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import { useAppContext } from '../context/AppContext'
 
 const accessoriesImg = fashionImg
 
 export default function HomePage() {
-  const { brands } = useAppContext()
+  const { brands, favorites, toggleFavorite } = useAppContext()
 
   const [searchTerm, setSearchTerm] = useState('')
   const [filteredResults, setFilteredResults] = useState([])
 
-  // Random 4 brands from data
+  // Random 4 featured brands
   const featuredBrands = [...brands]
     .sort(() => 0.5 - Math.random())
     .slice(0, 4)
 
+  // Search function
   const handleSearch = () => {
     const results = brands.filter((brand) =>
       brand.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -33,7 +34,8 @@ export default function HomePage() {
 
   return (
     <div className="page">
-      {/* Hero */}
+
+      {/* Hero Section */}
       <section
         className="hero"
         style={{
@@ -67,17 +69,31 @@ export default function HomePage() {
           <h2 style={{ margin: '24px 0 16px' }}>Search Results</h2>
           <div className="grid grid-4" style={{ marginBottom: '32px' }}>
             {filteredResults.length > 0 ? (
-              filteredResults.map((brand) => (
-                <div key={brand.id} className="brand-card">
-                  <img src={brand.image} alt={brand.name} className="brand-img" />
-                  <h3>{brand.name}</h3>
-                  <p>{brand.category.join(', ')}</p>
-                  <p>⭐ {brand.rating}</p>
-                  <div className="card-actions">
-                    <button className="btn">View Details</button>
+              filteredResults.map((brand) => {
+                const isFavorite = favorites.includes(brand.id)
+
+                return (
+                  <div key={brand.id} className="brand-card">
+                    <img src={brand.image} alt={brand.name} className="brand-img" />
+                    <h3>{brand.name}</h3>
+                    <p>{brand.category.join(', ')}</p>
+                    <p>⭐ {brand.rating}</p>
+
+                    <div className="card-actions">
+                      <Link to={`/brand/${brand.id}`}>
+                        <button className="btn">View Details</button>
+                      </Link>
+
+                      <button
+                        className="btn btn-outline"
+                        onClick={() => toggleFavorite(brand.id)}
+                      >
+                        {isFavorite ? 'Remove Favorite' : 'Add Favorite'}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              ))
+                )
+              })
             ) : (
               <p>No brands found.</p>
             )}
@@ -134,19 +150,31 @@ export default function HomePage() {
       <h2 style={{ marginBottom: '16px' }}>Featured Brands</h2>
 
       <div className="grid grid-4">
-        {featuredBrands.map((brand) => (
-          <div key={brand.id} className="brand-card">
-            <img src={brand.image} alt={brand.name} className="brand-img" />
-            <h3>{brand.name}</h3>
-            <p>{brand.category.join(', ')}</p>
-            <p>⭐ {brand.rating}</p>
+        {featuredBrands.map((brand) => {
+          const isFavorite = favorites.includes(brand.id)
 
-            <div className="card-actions">
-              <button className="btn">View Details</button>
-              <button className="btn btn-outline">Add Favorite</button>
+          return (
+            <div key={brand.id} className="brand-card">
+              <img src={brand.image} alt={brand.name} className="brand-img" />
+              <h3>{brand.name}</h3>
+              <p>{brand.category.join(', ')}</p>
+              <p>⭐ {brand.rating}</p>
+
+              <div className="card-actions">
+                <Link to={`/brand/${brand.id}`}>
+                  <button className="btn">View Details</button>
+                </Link>
+
+                <button
+                  className="btn btn-outline"
+                  onClick={() => toggleFavorite(brand.id)}
+                >
+                  {isFavorite ? 'Remove Favorite' : 'Add Favorite'}
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

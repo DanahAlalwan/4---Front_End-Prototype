@@ -56,6 +56,13 @@ import harmonyLogo from '../assets/images/harmonyLogo.png'
 
 import sunImg from '../assets/images/sunwave.png'
 import sunLogo from '../assets/images/sunwaveLogo.png'
+
+import tdbImg from '../assets/images/tdb.png'
+import tdbLogo from '../assets/images/tdbLogo.png'
+
+import fashion1886Img from '../assets/images/1886.png'
+import fashion1886Logo from '../assets/images/1886Logo.png'
+
 export const brands = [
   {
     id: 1,
@@ -276,6 +283,32 @@ export const brands = [
     popularity: 86,
     createdAt: '2025-04-07',
     rating: 4.5,
+    reviews: []
+  },
+  {
+    id: 18,
+    name: 'The Diamond Boutique',
+    category: ['accessories', 'fashion'],
+    description: 'A Saudi luxury fashion brand specializing in handbags, clutches, and elegant leather accessories, combining Saudi design identity with refined craftsmanship and sustainable vegan leather materials.',
+    website: 'https://tdbsa.co',
+    image: tdbImg,
+    logo: tdbLogo,
+    popularity: 94,
+    createdAt: '2025-04-08',
+    rating: 4.8,
+    reviews: []
+  },
+  {
+    id: 19,
+    name: '1886',
+    category: ['fashion'],
+    description: 'A Saudi streetwear fashion brand founded in Riyadh, known for elevated urban clothing that blends Saudi heritage with contemporary global street style through bold and modern designs.',
+    website: 'https://1886fashion.com',
+    image: fashion1886Img,
+    logo: fashion1886Logo,
+    popularity: 96,
+    createdAt: '2025-04-09',
+    rating: 4.8,
     reviews: []
   }
 
