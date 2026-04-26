@@ -3,6 +3,7 @@ import { useAppContext } from '../context/AppContext'
 
 export default function ReviewForm({ brandId }) {
   const { addReview } = useAppContext()
+
   const [stars, setStars] = useState(0)
   const [comment, setComment] = useState('')
   const [message, setMessage] = useState('')
@@ -24,7 +25,7 @@ export default function ReviewForm({ brandId }) {
       id: Date.now(),
       user: 'Current User',
       stars,
-      comment
+      comment,
     })
 
     setMessage('Review submitted successfully!')
@@ -36,17 +37,24 @@ export default function ReviewForm({ brandId }) {
     <form className="review-form" onSubmit={handleSubmit}>
       <h3>Rate & Review</h3>
 
-      <label>Rating (1-5)</label>
-      <input
-        type="number"
-        min="1"
-        max="5"
-        value={stars}
-        onChange={(e) => setStars(Number(e.target.value))}
-      />
+      <label>Rating</label>
+      <div className="star-rating">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button
+            type="button"
+            key={star}
+            className={star <= stars ? 'star selected' : 'star'}
+            onClick={() => setStars(star)}
+            aria-label={`${star} stars`}
+          >
+            ★
+          </button>
+        ))}
+      </div>
 
       <label>Comment</label>
       <textarea
+        placeholder="Write your review here..."
         value={comment}
         onChange={(e) => setComment(e.target.value)}
         maxLength="250"
