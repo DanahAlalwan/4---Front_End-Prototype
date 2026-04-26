@@ -2,22 +2,39 @@ import { createContext, useContext, useMemo, useState } from 'react'
 import {
   brands as initialBrands,
   categories as initialCategories,
-  verificationRequests as initialRequests
+  verificationRequests as initialRequests,
 } from '../data/mockData'
 
 const AppContext = createContext()
 
 export function AppProvider({ children }) {
   const [user, setUser] = useState({
-    name: 'Guest',
-    role: 'customer',
-    isAuthenticated: true
+    name: '',
+    role: '',
+    isAuthenticated: false,
   })
 
   const [brands, setBrands] = useState(initialBrands)
   const [categories, setCategories] = useState(initialCategories)
-  const [favorites, setFavorites] = useState([1, 3])
+  const [favorites, setFavorites] = useState([])
   const [verificationRequests, setVerificationRequests] = useState(initialRequests)
+
+  const login = (role = 'customer') => {
+    setUser({
+      name: 'Current User',
+      role,
+      isAuthenticated: true,
+    })
+  }
+
+  const logout = () => {
+    setUser({
+      name: '',
+      role: '',
+      isAuthenticated: false,
+    })
+    setFavorites([])
+  }
 
   const toggleFavorite = (brandId) => {
     setFavorites((prev) =>
@@ -40,7 +57,7 @@ export function AppProvider({ children }) {
         return {
           ...brand,
           reviews: updatedReviews,
-          rating: Number(avg.toFixed(1))
+          rating: Number(avg.toFixed(1)),
         }
       })
     )
@@ -76,6 +93,8 @@ export function AppProvider({ children }) {
     () => ({
       user,
       setUser,
+      login,
+      logout,
       brands,
       categories,
       favorites,
@@ -85,7 +104,7 @@ export function AppProvider({ children }) {
       approveRequest,
       rejectRequest,
       addCategory,
-      deleteCategory
+      deleteCategory,
     }),
     [user, brands, categories, favorites, verificationRequests]
   )
