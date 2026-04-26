@@ -1,16 +1,19 @@
 import { useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import BrandCard from '../components/BrandCard'
 import { useAppContext } from '../context/AppContext'
 
 export default function CategoryPage() {
   const { name } = useParams()
-  const { brands } = useAppContext()
+  const navigate = useNavigate()
+  const { brands, categories } = useAppContext()
+
   const [sortBy, setSortBy] = useState('Newest')
+  const selectedCategory = name?.toLowerCase() || 'beauty'
 
   const filteredBrands = useMemo(() => {
-    const result = brands.filter(
-      (brand) => brand.category.includes(name.toLowerCase())
+    const result = brands.filter((brand) =>
+      brand.category.includes(selectedCategory)
     )
 
     if (sortBy === 'Popular') {
@@ -24,25 +27,49 @@ export default function CategoryPage() {
     return [...result].sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     )
-  }, [brands, name, sortBy])
+  }, [brands, selectedCategory, sortBy])
 
   return (
     <div className="page">
       <div className="page-header">
-        <h2>{name} Brands</h2>
-
-        <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-          <option>Newest</option>
-          <option>Popular</option>
-          <option>A-Z</option>
-        </select>
+        <h2>{selectedCategory} Brands</h2>
+        <p>Select any category and browse its brands.</p>
       </div>
 
-      <div className="grid grid-3">
-        {filteredBrands.map((brand) => (
-          <BrandCard key={brand.id} brand={brand} />
-        ))}
+      <div className="filters-row">
+        <div>
+          <label>Choose Category</label>
+          <select
+            value={selectedCategory}
+            onChange={(e) => navigate(`/category/${e.target.value}`)}
+          >
+            {categories.map((category) => (
+              <option key={category} value={category.toLowerCase()}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div>
+          <label>Sort By</label>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
+            <option>Newest</option>
+            <option>Popular</option>
+            <option>A-Z</option>
+          </select>
+        </div>
       </div>
+
+      {filteredBrands.length === 0 ? (
+        <p>No brands found in this category.</p>
+      ) : (
+        <div className="brand-grid">
+          {filteredBrands.map((brand) => (
+            <BrandCard key={brand.id} brand={brand} />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
