@@ -38,7 +38,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="page">
+    <div className="page form-page">
       <div className="form-card">
         <h2>Login</h2>
 
