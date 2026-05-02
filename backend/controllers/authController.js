@@ -10,7 +10,7 @@ const generateToken = (id) => {
 const registerUser = async (req, res) => {
   const { name, email, password, role } = req.body
 
-  if (!name  !password) {
+  if (!name  || !password) {
     res.status(400)
     throw new Error('Please provide name, email, and password')
   }
