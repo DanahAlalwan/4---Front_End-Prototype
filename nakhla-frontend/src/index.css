@@ -130,6 +130,7 @@ button {
   margin-bottom: 24px;
 }
 
+
 .page-header h2 {
   font-size: 32px;
   margin-bottom: 8px;
@@ -149,7 +150,7 @@ button {
 .brand-grid,
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 22px;
 }
 

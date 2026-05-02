@@ -1,3 +1,4 @@
+/* ===== GLOBAL ===== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -15,6 +16,7 @@ a {
     color: inherit;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -39,11 +41,15 @@ a {
     flex-wrap: wrap;
 }
 
+/* ===== PAGE ===== */
 .page {
     padding: 32px;
     min-height: 80vh;
+    max-width: 1200px;
+    margin: auto;
 }
 
+/* ===== HERO ===== */
 .hero {
     background: linear-gradient(135deg, #0c7a43, #16995a);
     color: white;
@@ -57,6 +63,7 @@ a {
     margin-bottom: 12px;
 }
 
+/* ===== INPUTS ===== */
 .search-row {
     display: flex;
     gap: 12px;
@@ -74,6 +81,7 @@ select {
     margin-bottom: 12px;
 }
 
+/* ===== BUTTONS ===== */
 .btn {
     background: #0c7a43;
     color: white;
@@ -94,29 +102,22 @@ select {
     color: white;
 }
 
-.full-width {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.small {
-    padding: 8px 12px;
-    margin-right: 8px;
-}
-
+/* ===== GRID BASE ===== */
 .grid {
     display: grid;
     gap: 20px;
+}
+
+/* Desktop */
+.grid-4 {
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-3 {
     grid-template-columns: repeat(3, 1fr);
 }
 
-.grid-4 {
-    grid-template-columns: repeat(4, 1fr);
-}
-
+/* ===== CARDS ===== */
 .category-card,
 .brand-card,
 .form-card,
@@ -125,30 +126,38 @@ select {
 .status-card {
     background: white;
     border-radius: 16px;
-    padding: 20px;
+    padding: 18px;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    transition: 0.2s;
+}
+
+/* 🔥 تصغير الكروت */
+.brand-card {
+    max-width: 280px;
+    margin: 0 auto;
 }
 
 .category-card:hover,
 .brand-card:hover {
-    transform: translateY(-2px);
-    transition: 0.2s ease;
+    transform: translateY(-3px);
+}
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
+/* ===== IMAGES ===== */
 .brand-img,
 .cover-image {
     width: 100%;
+    height: 180px;
+    object-fit: cover;
     border-radius: 12px;
     margin-bottom: 12px;
 }
 
-.brand-logo {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin-bottom: 12px;
-}
-
+/* ===== ACTIONS ===== */
 .card-actions {
     display: flex;
     gap: 10px;
@@ -156,65 +165,17 @@ select {
     margin-top: 12px;
 }
 
-.form-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.form-card {
-    width: 100%;
-    max-width: 420px;
-}
-
-.form-card.wide {
-    max-width: 650px;
-}
-
-.error {
-    color: #d62828;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
-
-.message {
-    margin-top: 10px;
-    color: #0c7a43;
-}
-
+/* ===== OTHER LAYOUT ===== */
 .page-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
-}
-
-.brand-profile {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 24px;
-    margin-bottom: 32px;
+    margin-bottom: 20px;
 }
 
 .dashboard-layout {
     display: grid;
     grid-template-columns: 240px 1fr;
-    gap: 24px;
-}
-
-.sidebar {
-    background: white;
-    padding: 20px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    height: fit-content;
-}
-
-.dashboard-content {
-    display: flex;
-    flex-direction: column;
     gap: 24px;
 }
 
@@ -224,142 +185,39 @@ select {
     gap: 18px;
 }
 
-.table-wrap {
-    overflow-x: auto;
-    background: white;
-    border-radius: 16px;
-    padding: 16px;
-}
+/* ===== RESPONSIVE ===== */
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    border-bottom: 1px solid #eee;
-    padding: 14px;
-    text-align: left;
-}
-
-.category-manager {
-    display: flex;
-    gap: 12px;
-    margin: 20px 0;
-}
-
-.category-list {
-    list-style: none;
-    background: white;
-    border-radius: 16px;
-    padding: 16px;
-}
-
-.category-list li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: white;
-    border-top: 1px solid #e5e5e5;
-}
-
+/* Tablet */
 @media (max-width: 992px) {
-    .grid-3,
-    .grid-4,
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .stats-grid,
-    .brand-profile,
     .dashboard-layout {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        gap: 12px;
+/* Mobile */
+@media (max-width: 600px) {
+    .grid-3,
+    .grid-4,
+    .stats-grid,
+    .dashboard-layout {
+        grid-template-columns: 1fr;
     }
 
-    .nav-links {
-        justify-content: center;
-    }.grid-3,
-     .grid-4,
-     .stats-grid,
-     .brand-profile,
-     .dashboard-layout {
-         grid-template-columns: 1fr;
-     }
-
-    .search-row,
-    .category-manager,
-    .page-header {
+    .navbar {
         flex-direction: column;
-        align-items: stretch;
+        gap: 10px;
     }
 
     .page {
         padding: 20px;
-    }
-    .hero-content {
-        max-width: 760px;
-    }
-
-    .brand-img,
-    .cover-image {
-        width: 100%;
-        height: 190px;
-        object-fit: cover;
-        border-radius: 12px;
-        margin-bottom: 12px;
-        display: block;
-        background: #f1f1f1;
-    }
-
-    .category-card {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-        min-height: 110px;
-        overflow: hidden;
-    }
-
-    .category-card-content {
-        flex: 1;
-    }
-
-    .category-img {
-        width: 110px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 12px;
-        flex-shrink: 0;
-    }
-
-    .brand-card {
-        overflow: hidden;
-    }
-
-    .search-row input {
-        margin-bottom: 0;
-    }
-
-    @media (max-width: 768px) {
-        .category-card {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .category-img {
-            width: 100%;
-            height: 140px;
-        }
     }
 }
