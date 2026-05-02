@@ -38,7 +38,7 @@ const createBrand = async (req, res) => {
   const { name, description, category, logoUrl, coverUrl, website, instagram } =
     req.body
 
-  if (!name  !category) {
+  if (!name || !category) {
     res.status(400)
     throw new Error('Name, description, and category are required')
   }

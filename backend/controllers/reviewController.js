@@ -12,12 +12,12 @@ const getReviewsByBrand = async (req, res) => {
 const createReview = async (req, res) => {
   const { brandId, stars, comment } = req.body
 
-  if (!brandId  !stars) {
+  if (!brandId || !stars) {
     res.status(400)
     throw new Error('Brand ID and stars are required')
   }
 
-  if (stars < 1  stars > 5) {
+  if (stars < 1 || stars > 5) {
     res.status(400)
     throw new Error('Stars must be between 1 and 5')
   }
